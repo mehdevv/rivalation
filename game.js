@@ -1377,6 +1377,14 @@ class Player {
                 this.game.ui.closeQuestPanel();
             }
             
+            // Close settings dropdown when player starts moving
+            if (this.game.ui && this.game.ui.closeSettingsDropdown) {
+                const settingsDropdown = document.getElementById('settings-dropdown');
+                if (settingsDropdown && settingsDropdown.style.display === 'block') {
+                    this.game.ui.closeSettingsDropdown();
+                }
+            }
+            
             // Update direction
             if (Math.abs(input.x) > Math.abs(input.y)) {
                 this.direction = input.x > 0 ? 'right' : 'left';
@@ -1542,12 +1550,19 @@ class UIManager {
             notificationBadge.style.display = 'none';
         }
         
+        // Save quest panel state to database
+        await this.saveQuestPanelState(true);
+        
         console.log('📋 Quest panel pulled out from left side');
     }
     
-    closeQuestPanel() {
+    async closeQuestPanel() {
         this.elements.questPanel.classList.remove('open');
         this.elements.questToggle.classList.remove('open');
+        
+        // Save quest panel state to database
+        await this.saveQuestPanelState(false);
+        
         console.log('📋 Quest panel pushed back behind arrow');
         
         // Re-check notification status when panel closes
@@ -1558,6 +1573,40 @@ class UIManager {
             setTimeout(() => {
                 this.game.auth.loadPlayerQuests();
             }, 100);
+        }
+    }
+    
+    async saveQuestPanelState(isOpen) {
+        if (!this.game?.auth?.userStats || !window.db) return;
+        
+        try {
+            // Update userStats
+            this.game.auth.userStats.questPanelOpen = isOpen;
+            
+            // Save to database
+            await this.game.auth.saveUserStats();
+            
+            console.log(`💾 Quest panel state saved: ${isOpen ? 'open' : 'closed'}`);
+        } catch (error) {
+            console.error('❌ Error saving quest panel state:', error);
+        }
+    }
+    
+    restoreQuestPanelState() {
+        if (!this.game?.auth?.userStats) return;
+        
+        const isOpen = this.game.auth.userStats.questPanelOpen === true;
+        
+        if (isOpen) {
+            // Restore open state
+            this.elements.questPanel.classList.add('open');
+            this.elements.questToggle.classList.add('open');
+            console.log('📋 Quest panel state restored: open');
+        } else {
+            // Ensure closed state
+            this.elements.questPanel.classList.remove('open');
+            this.elements.questToggle.classList.remove('open');
+            console.log('📋 Quest panel state restored: closed');
         }
     }
     
@@ -3940,6 +3989,15 @@ class AuthManager {
             hudRefreshButton.disabled = true;
         }
         
+        // Save current quest panel state before refresh
+        if (this.game && this.game.ui && this.game.ui.elements) {
+            const isCurrentlyOpen = this.game.ui.elements.questPanel && 
+                                    this.game.ui.elements.questPanel.classList.contains('open');
+            if (this.game.ui.saveQuestPanelState) {
+                await this.game.ui.saveQuestPanelState(isCurrentlyOpen);
+            }
+        }
+        
         try {
             // Refresh user stats from Firestore
             if (this.user) {
@@ -3952,6 +4010,14 @@ class AuthManager {
                 await this.loadPlayerQuests();
                 console.log('✅ Player quests refreshed');
             }
+            
+            // Restore quest panel state after refresh (after both stats and quests are loaded)
+            // Use a small delay to ensure DOM is ready
+            setTimeout(() => {
+                if (this.game && this.game.ui && this.game.ui.restoreQuestPanelState) {
+                    this.game.ui.restoreQuestPanelState();
+                }
+            }, 100);
             
             // Show success feedback
             this.showHudRefreshSuccess();
@@ -4164,6 +4230,7 @@ class AuthManager {
                     points: 0,
                     experience: 0,
                     seenQuests: [], // Track quest IDs that have been seen
+                    questPanelOpen: false, // Track quest panel open/closed state
                     createdAt: new Date().toISOString(),
                     lastLogin: new Date().toISOString()
                 };
@@ -4185,7 +4252,19 @@ class AuthManager {
                 console.log("✅ Initialized seenQuests array");
             }
             
+            // Ensure questPanelOpen field exists (default to false if not set)
+            if (this.userStats && this.userStats.questPanelOpen === undefined) {
+                this.userStats.questPanelOpen = false;
+                await this.saveUserStats();
+                console.log("✅ Initialized questPanelOpen field");
+            }
+            
             this.game.ui.updateUserStats(this.userStats);
+            
+            // Restore quest panel state after userStats are loaded
+            if (this.game.ui && this.game.ui.restoreQuestPanelState) {
+                this.game.ui.restoreQuestPanelState();
+            }
             
             // Load player's quests after loading user stats
             await this.loadPlayerQuests();
@@ -4378,7 +4457,19 @@ class AuthManager {
                     await this.saveUserStats();
                 }
                 
+                // Ensure questPanelOpen field exists (default to false if not set)
+                if (this.userStats.questPanelOpen === undefined) {
+                    this.userStats.questPanelOpen = false;
+                    await this.saveUserStats();
+                }
+                
                 this.game.ui.updateUserStats(this.userStats);
+                
+                // Restore quest panel state after refresh
+                if (this.game.ui && this.game.ui.restoreQuestPanelState) {
+                    this.game.ui.restoreQuestPanelState();
+                }
+                
                 console.log("🔄 User stats refreshed from Firestore");
             }
             
