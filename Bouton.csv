@@ -1,27 +1,29 @@
 ,,,,,
 Bouton,Affiche,,,,Maison
-Pointage,Heure d'arriver,Heure de Sortir,Commentaire,,2
+Pointage,Heure d'arriver,Heure de Sortir,Commentaire,,7
 Dip,Nom Prénom,الاسم و اللقب,Formation,,1
-Fiche D'inscription,Nom Prénom,N° Tel,Formation,,
-Pré-inscription,Nom Prénom,N° Tel,Wilaya / Targa / FB,Formation,
-Caisse,Fond de Caisse,Bons,Dépense,,
-Taches,Lecture,,,,5
-FeedBack,Lecture,,,,
-Satisfaction Clients,Lecture,,,,
-Mission,Tableau a remplir (mission 1 - 2 - etc),,,,7
+Fiche D'inscription,Nom Prénom,N° Tel,Formation,,5
+Pré-inscription,Nom Prénom,N° Tel,Wilaya / Targa / FB,Formation,5
+Caisse,Fond de Caisse,Bons,Dépense,,5
+Taches,Lecture,,,,4
+FeedBack,Lecture,,,,4
+Mission,Tableau a remplir (mission 1 - 2 - etc),,,,4
 Photo / Video,Formation,Grp,La Date,,8
-Soutenance,Formation,Grp,,,
-Bilan de Paiement,Formation,Grp,Pourcentage de Paiement,,
-Bilan de Présences,Formation,Grp,Pourcentage de Présence,,
-N° D'étudiant,Formation,Grp,Nomber,,
-Séminaire,Titres,Heure de Départ / Fin,N° de Participants,N° d'attestations,6
-Tel,Formation,Grp,1er Séance,,
-,,,2éme Séance,,
-,,,3éme Séance,,
-Saisie,Bon,Bons Reste,Bons Saisie,,
-,Fiche D'inscription,Fiche Reste,Fiche Saisie,,
-,Diplôme,Dip Reste,Dip Saisie,,
-Hygiene,Targa / Wilaya,"Fait par ""Player""",Pourcentage (50-75-100),,
+Soutenance,Formation,Grp,,,8
+Bilan de Paiement,Formation,Grp,Pourcentage de Paiement,,8
+Bilan de Présences,Formation,Grp,Pourcentage de Présence,,8
+N° D'étudiant,Formation,Grp,Nomber,,8
+Satisfaction Clients,Lecture,,,,8
+Séminaire,Titres,Heure de Départ / Fin,N° de Participants,N° d'attestations,2
+Tel,Titres,Heure de Départ / Fin,1er Séance,,2
+,,,2éme Séance,,2
+,,,3éme Séance,,2
+,,,N° d'attestations,,2
+Saisie,Bon,Bons Reste,Bons Saisie,,2
+,Fiche D'inscription,Fiche Reste,Fiche Saisie,,2
+,Diplôme,Dip Reste,Dip Saisie,,2
+,N° d'attestations,,,2
+Hygiene,Targa / Wilaya,"Fait par ""Player""",Pourcentage (50-75-100),,2
 Idées D'amélioration,Titres,Details,,,3
 Missions des Autres,Affiche les missions des autres selon Nom de Player (Juste Lecture),,,,
 Classement,Affiche le Classement,,,,

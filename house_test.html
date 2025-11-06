@@ -106,14 +106,14 @@
             <p>Click on any house card below to test the new house-specific button system. Each house now shows:</p>
             <ul>
                 <li><strong>House-specific buttons</strong> based on the house structure</li>
-                <li><strong>Section buttons</strong> for houses with multiple sections (e.g., Seminar Management shows "Seminar Info", "Phone Info", "Entry Type", "Hygiene")</li>
-                <li><strong>Form buttons</strong> for simple houses (e.g., Login shows "Fill Form")</li>
+                <li><strong>Section buttons</strong> for houses with multiple sections (e.g., Gestion d'Activités shows "Tasks", "Feedback")</li>
+                <li><strong>Form buttons</strong> for simple houses (e.g., Rival shows "Fill Form")</li>
                 <li><strong>Icon indicators</strong> to show button types (📝 for forms, 📊 for data, ⚙️ for settings)</li>
                 <li><strong>Proper names</strong> from the JSON data structure</li>
                 <li><strong>Dynamic forms</strong> with correct field types (text, password, time, number, select, textarea)</li>
                 <li><strong>Conditional fields</strong> for Entry Type selection</li>
-                <li><strong>Read-only sections</strong> for Analytics & History</li>
-                <li><strong>Table fields</strong> for Mission Planning</li>
+                <li><strong>Read-only sections</strong> for Administration</li>
+                <li><strong>Table fields</strong> for Privé</li>
             </ul>
         </div>
         
@@ -125,143 +125,144 @@
     <script>
         // House data from the JSON structure
         const houseData = {
-            1: { id: 1, name: "Login", fields: [{ label: "Password", type: "password" }] },
+            1: { id: 1, name: "Rival", fields: [
+                { label: "Mot de passe", type: "password" }
+            ]},
             2: { 
                 id: 2, 
-                name: "Seminar Management", 
+                name: "Centre d'Informations", 
                 sections: [
-                    { name: "Seminar Info", fields: [
-                        { label: "Titles", type: "text" },
-                        { label: "Start Time", type: "time" },
-                        { label: "End Time", type: "time" },
-                        { label: "Number of Participants", type: "number" },
-                        { label: "Number of Certificates", type: "number" }
+                    { name: "Séminaire", fields: [
+                        { label: "Titres", type: "text" },
+                        { label: "Heure de Départ / Fin", type: "text" },
+                        { label: "1er Séance", type: "text" },
+                        { label: "2éme Séance", type: "text" },
+                        { label: "3éme Séance", type: "text" },
+                        { label: "N° d'attestations", type: "number" }
                     ]},
-                    { name: "Phone Info", fields: [
-                        { label: "Training", type: "text" },
-                        { label: "Group", type: "text" },
-                        { label: "Session", type: "select", options: ["1st", "2nd", "3rd", "..."] }
+                    { name: "Phone", fields: [
+                        { label: "Titres", type: "text" },
+                        { label: "Heure de Départ / Fin", type: "text" },
+                        { label: "1er Séance", type: "text" },
+                        { label: "2éme Séance", type: "text" },
+                        { label: "3éme Séance", type: "text" },
+                        { label: "N° d'attestations", type: "number" }
                     ]},
-                    { name: "Entry Type", conditionalGroups: [
-                        { condition: "voucher", fields: [
-                            { label: "Remaining Vouchers", type: "number" },
-                            { label: "Vouchers Entered", type: "number" }
-                        ]},
-                        { condition: "registration_form", fields: [
-                            { label: "Remaining Forms", type: "number" },
-                            { label: "Forms Entered", type: "number" }
-                        ]},
-                        { condition: "diploma", fields: [
-                            { label: "Remaining Diplomas", type: "number" },
-                            { label: "Diplomas Entered", type: "number" }
-                        ]}
+                    { name: "La Saisie", fields: [
+                        { label: "Bon", type: "text" },
+                        { label: "Bons Reste", type: "text" },
+                        { label: "Bons Saisie", type: "text" },
+                        { label: "Fiche D'inscription", type: "text" },
+                        { label: "Fiche Reste", type: "text" },
+                        { label: "Fiche Saisie", type: "text" },
+                        { label: "Diplôme", type: "text" },
+                        { label: "Dip Reste", type: "text" },
+                        { label: "Dip Saisie", type: "text" },
+                        { label: "N° d'attestations", type: "number" }
                     ]},
-                    { name: "Hygiene", fields: [
-                        { label: "District", type: "text" },
-                        { label: "Province", type: "text" },
-                        { label: "Completed by", type: "text" },
-                        { label: "Percentage", type: "number" }
+                    { name: "Hygiène", fields: [
+                        { label: "Targa / Wilaya", type: "text" },
+                        { label: "Fait par \"Player\"", type: "text" },
+                        { label: "Pourcentage (50-75-100)", type: "number" }
                     ]}
                 ]
             },
             3: { 
                 id: 3, 
-                name: "Analytics & History", 
+                name: "Administration", 
                 sections: [
-                    { name: "Improvement Ideas", fields: [
-                        { label: "Titles", type: "text" },
-                        { label: "Details", type: "textarea" }
+                    { name: "Idées D'amélioration", fields: [
+                        { label: "Titres", type: "text" },
+                        { label: "Détails", type: "textarea" }
                     ]},
-                    { name: "Other Players' Missions", type: "readonly", description: "Displays other players' missions based on player name" },
-                    { name: "Leaderboard", type: "readonly", description: "Displays the current ranking" },
-                    { name: "Coin History", type: "readonly", description: "Displays coin history by calendar date" }
+                    { name: "Missions des Autres", type: "readonly", description: "Affiche les missions des autres selon Nom de Player (Juste Lecture)" },
+                    { name: "Classement", type: "readonly", description: "Affiche le Classement" },
+                    { name: "Coins Historique", type: "readonly", description: "Affiche l'historique selon Calendar" }
                 ]
             },
             4: { 
                 id: 4, 
-                name: "Time Tracking", 
-                fields: [
-                    { label: "Arrival Time", type: "time" },
-                    { label: "Departure Time", type: "time" },
-                    { label: "Comments", type: "textarea" }
+                name: "Gestion d'Activités", 
+                sections: [
+                    { name: "Taches", type: "readonly", description: "Lecture" },
+                    { name: "Feedback", type: "readonly", description: "Lecture" },
+                    { name: "Mission", fields: [
+                        { label: "Missions", type: "table", columns: ["Mission 1", "Mission 2", "Mission 3", "..."] }
+                    ]}
                 ]
             },
             5: { 
                 id: 5, 
-                name: "Administrative Data", 
+                name: "Gestion Administrative", 
                 sections: [
-                    { name: "Diploma", fields: [
-                        { label: "First Name", type: "text" },
-                        { label: "Last Name", type: "text" },
-                        { label: "Phone Number", type: "text" },
-                        { label: "Training", type: "text" }
+                    { name: "Diplôme", fields: [
+                        { label: "Nom Prénom", type: "text" },
+                        { label: "N° Tel", type: "text" },
+                        { label: "Formation", type: "text" }
                     ]},
-                    { name: "Registration Form", fields: [
-                        { label: "First Name", type: "text" },
-                        { label: "Last Name", type: "text" },
-                        { label: "Phone Number", type: "text" },
-                        { label: "Training", type: "text" }
+                    { name: "Fiche D'inscription", fields: [
+                        { label: "Nom Prénom", type: "text" },
+                        { label: "N° Tel", type: "text" },
+                        { label: "Formation", type: "text" }
                     ]},
-                    { name: "Pre-Registration", fields: [
-                        { label: "First Name", type: "text" },
-                        { label: "Last Name", type: "text" },
-                        { label: "Phone Number", type: "text" },
-                        { label: "Training", type: "text" },
-                        { label: "Province", type: "text" },
-                        { label: "District", type: "text" },
-                        { label: "Facebook", type: "text" }
+                    { name: "Pré-inscription", fields: [
+                        { label: "Nom Prénom", type: "text" },
+                        { label: "N° Tel", type: "text" },
+                        { label: "Wilaya / Targa / FB", type: "text" },
+                        { label: "Formation", type: "text" }
                     ]},
-                    { name: "Cash Register", fields: [
-                        { label: "Cash Fund", type: "number" },
-                        { label: "Vouchers", type: "number" },
-                        { label: "Expenses", type: "number" }
+                    { name: "Caisse", fields: [
+                        { label: "Fond de Caisse", type: "number" },
+                        { label: "Bons", type: "number" },
+                        { label: "Dépense", type: "number" }
                     ]}
                 ]
             },
             6: { 
                 id: 6, 
-                name: "Media & Statistics", 
-                sections: [
-                    { name: "Photo / Video", fields: [
-                        { label: "Training", type: "text" },
-                        { label: "Group", type: "text" },
-                        { label: "Date", type: "date" }
-                    ]},
-                    { name: "Defense (Final Project)", fields: [
-                        { label: "Training", type: "text" },
-                        { label: "Group", type: "text" }
-                    ]},
-                    { name: "Payment Report", fields: [
-                        { label: "Training", type: "text" },
-                        { label: "Group", type: "text" },
-                        { label: "Payment %", type: "number" }
-                    ]},
-                    { name: "Attendance Report", fields: [
-                        { label: "Training", type: "text" },
-                        { label: "Group", type: "text" },
-                        { label: "Attendance %", type: "number" }
-                    ]},
-                    { name: "Student Count", fields: [
-                        { label: "Training", type: "text" },
-                        { label: "Group", type: "text" },
-                        { label: "Number", type: "number" }
-                    ]}
+                name: "Privé", 
+                fields: [
+                    { label: "Missions", type: "table", columns: ["Mission 1", "Mission 2", "Mission 3", "..."] }
                 ]
             },
             7: { 
                 id: 7, 
-                name: "Feedback & Tasks", 
-                sections: [
-                    { name: "Tasks", type: "readonly", description: "Read-only view" },
-                    { name: "Feedback", type: "readonly", description: "Read-only view" },
-                    { name: "Customer Satisfaction", type: "readonly", description: "Read-only view" }
+                name: "Pointage", 
+                fields: [
+                    { label: "Heure d'arriver", type: "time" },
+                    { label: "Heure de Sortir", type: "time" },
+                    { label: "Commentaire", type: "textarea" }
                 ]
             },
             8: { 
                 id: 8, 
-                name: "Mission Planning", 
-                fields: [
-                    { label: "Missions", type: "table", columns: ["Mission 1", "Mission 2", "Mission 3", "..."] }
+                name: "Médias & Statistiques", 
+                sections: [
+                    { name: "Photo / Video", fields: [
+                        { label: "Formation", type: "text" },
+                        { label: "Grp", type: "text" },
+                        { label: "La Date", type: "date" }
+                    ]},
+                    { name: "Soutenance", fields: [
+                        { label: "Formation", type: "text" },
+                        { label: "Grp", type: "text" }
+                    ]},
+                    { name: "Bilan de Paiement", fields: [
+                        { label: "Formation", type: "text" },
+                        { label: "Grp", type: "text" },
+                        { label: "Pourcentage de Paiement", type: "number" }
+                    ]},
+                    { name: "Bilan de Présences", fields: [
+                        { label: "Formation", type: "text" },
+                        { label: "Grp", type: "text" },
+                        { label: "Pourcentage de Présence", type: "number" }
+                    ]},
+                    { name: "N° D'étudiant", fields: [
+                        { label: "Formation", type: "text" },
+                        { label: "Grp", type: "text" },
+                        { label: "Nomber", type: "number" }
+                    ]},
+                    { name: "Satisfaction Clients", type: "readonly", description: "Lecture" }
                 ]
             }
         };

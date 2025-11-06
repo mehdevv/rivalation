@@ -1688,7 +1688,7 @@ class UIManager {
                 <div class="settings-zoom-header">
                     <div class="settings-item-icon">🔍</div>
                     <div class="settings-item-text">
-                        <div class="settings-item-title">Zoom Level</div>
+                        <div class="settings-item-title">Niveau de zoom</div>
                         <div class="settings-item-subtitle" id="zoomLevelDisplay">${(currentZoom * 100).toFixed(0)}%</div>
                     </div>
                 </div>
@@ -2000,7 +2000,7 @@ class UIManager {
                         <p id="profileEmail" style="margin: 0 0 10px 0; color: #666; font-size: 14px;">user@example.com</p>
                         <div id="profileStatus" style="display: inline-flex; align-items: center; gap: 8px; background: rgba(76, 175, 80, 0.1); color: #4CAF50; padding: 6px 12px; border-radius: 20px; font-size: 12px; font-weight: 600; border: 1px solid rgba(76, 175, 80, 0.2);">
                             <span>🟢</span>
-                            <span>Online</span>
+                            <span>En ligne</span>
                         </div>
                     </div>
                 </div>
@@ -2008,7 +2008,7 @@ class UIManager {
                 <!-- Main Stats Grid -->
                 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 15px; margin-bottom: 25px;">
                     <div style="background: linear-gradient(135deg, rgba(76, 175, 80, 0.1), rgba(76, 175, 80, 0.05)); padding: 20px; border-radius: 15px; text-align: center; border: 1px solid rgba(76, 175, 80, 0.2);">
-                        <div style="color: #4CAF50; font-size: 16px; font-weight: 600; margin-bottom: 8px;">🎯 Level</div>
+                        <div style="color: #4CAF50; font-size: 16px; font-weight: 600; margin-bottom: 8px;">🎯 Niveau</div>
                         <div id="profileLevel" style="color: #1d1d1f; font-size: 28px; font-weight: 700;">1</div>
                         <div id="levelProgress" style="margin-top: 8px; background: rgba(0, 0, 0, 0.1); height: 4px; border-radius: 2px; overflow: hidden;">
                             <div style="background: linear-gradient(90deg, #4CAF50, #8BC34A); height: 100%; width: 0%; transition: width 0.3s ease;"></div>
@@ -2016,21 +2016,21 @@ class UIManager {
                     </div>
                     
                     <div style="background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(255, 215, 0, 0.05)); padding: 20px; border-radius: 15px; text-align: center; border: 1px solid rgba(255, 215, 0, 0.2);">
-                        <div style="color: #FFD700; font-size: 16px; font-weight: 600; margin-bottom: 8px;">💰 Coins</div>
+                        <div style="color: #FFD700; font-size: 16px; font-weight: 600; margin-bottom: 8px;">💰 Pièces</div>
                         <div id="profileCoins" style="color: #1d1d1f; font-size: 28px; font-weight: 700;">0 DZD</div>
-                        <div style="color: #666; font-size: 12px; margin-top: 4px;">Total Earned</div>
+                        <div style="color: #666; font-size: 12px; margin-top: 4px;">Total gagné</div>
                     </div>
                     
                     <div style="background: linear-gradient(135deg, rgba(33, 150, 243, 0.1), rgba(33, 150, 243, 0.05)); padding: 20px; border-radius: 15px; text-align: center; border: 1px solid rgba(33, 150, 243, 0.2);">
                         <div style="color: #2196F3; font-size: 16px; font-weight: 600; margin-bottom: 8px;">⭐ Experience</div>
                         <div id="profileExp" style="color: #1d1d1f; font-size: 28px; font-weight: 700;">0</div>
-                        <div id="expToNext" style="color: #666; font-size: 12px; margin-top: 4px;">0 to next level</div>
+                        <div id="expToNext" style="color: #666; font-size: 12px; margin-top: 4px;">0 pour le niveau suivant</div>
                     </div>
                     
                     <div style="background: linear-gradient(135deg, rgba(156, 39, 176, 0.1), rgba(156, 39, 176, 0.05)); padding: 20px; border-radius: 15px; text-align: center; border: 1px solid rgba(156, 39, 176, 0.2);">
                         <div style="color: #9C27B0; font-size: 16px; font-weight: 600; margin-bottom: 8px;">🏆 Quests</div>
                         <div id="profileQuests" style="color: #1d1d1f; font-size: 28px; font-weight: 700;">0</div>
-                        <div style="color: #666; font-size: 12px; margin-top: 4px;">Completed</div>
+                        <div style="color: #666; font-size: 12px; margin-top: 4px;">Terminé</div>
                     </div>
                 </div>
                 
@@ -2095,7 +2095,7 @@ class UIManager {
                     font-weight: 600;
                     cursor: pointer;
                     transition: all 0.3s ease;
-                ">Close</button>
+                ">Fermer</button>
                 
                 <button id="closeProfileModalX" style="
                     position: absolute;
@@ -2313,7 +2313,7 @@ class UIManager {
         const progressPercent = (currentLevelExp / expForNextLevel) * 100;
         
         if (expToNextEl) {
-            expToNextEl.textContent = `${(expForNextLevel - currentLevelExp).toLocaleString()} to next level`;
+            expToNextEl.textContent = `${(expForNextLevel - currentLevelExp).toLocaleString()} pour le niveau suivant`;
         }
         
         if (levelProgressEl) {
@@ -2561,7 +2561,7 @@ class UIManager {
                         font-weight: 600;
                         cursor: pointer;
                         transition: all 0.3s ease;
-                    ">Save Settings</button>
+                    ">Enregistrer les paramètres</button>
                 </div>
                 
                 <button id="closeSettingsModal" style="
@@ -2781,7 +2781,12 @@ class UIManager {
     }
     
     // Helper method to check if quest is expired
-    isQuestExpired(endTime) {
+    isQuestExpired(endTime, questStatus) {
+        // If quest is already completed or done, it should not expire
+        if (questStatus === 'completed' || questStatus === 'player_done') {
+            return false;
+        }
+        
         if (!endTime) return false;
         
         // Handle different time formats and timezone issues
@@ -2815,7 +2820,8 @@ class UIManager {
             timeDifference: end - now,
             isExpired: end <= now,
             timeSinceExpiry: now - end,
-            isValidDate: !isNaN(end.getTime())
+            isValidDate: !isNaN(end.getTime()),
+            questStatus: questStatus
         });
         
         return end <= now;
@@ -2913,7 +2919,8 @@ class UIManager {
         const timerInfo = this.game.auth.formatQuestTimeRemaining(quest.endTime);
         const isPlayerDone = quest.status === 'player_done';
         const isCompleted = quest.status === 'completed';
-        const isExpired = this.isQuestExpired(quest.endTime);
+        // Don't mark quest as expired if it's already completed or done
+        const isExpired = !isPlayerDone && !isCompleted && this.isQuestExpired(quest.endTime, quest.status);
         
         // Check if player has already submitted a justification
         const currentUserId = this.game.auth.user?.uid || this.game.auth.user?.email;
@@ -2931,7 +2938,7 @@ class UIManager {
                 <div class="quest-compact-info">
                     <div class="quest-title">${quest.name}</div>
                     <div class="quest-timer ${timerInfo.class}" data-end-time="${quest.endTime}">
-                        ${isCompleted ? '✅ Completed' : isPlayerDone ? '⏳ Waiting' : timerInfo.text}
+                        ${isCompleted ? '✅ Terminé' : isPlayerDone ? '⏳ En attente' : timerInfo.text}
                     </div>
                 </div>
                 <button class="quest-details-btn" data-quest-id="${quest.id}">
@@ -2966,20 +2973,20 @@ class UIManager {
                     ` : `
                         ${quest.verificationLink ? `
                             <button class="verification-btn" data-verification-link="${quest.verificationLink}">
-                                ${quest.verificationName || 'Verify Quest'}
+                                ${quest.verificationName || 'Vérifier la quête'}
                             </button>
                         ` : ''}
                         ${isCompleted ? `
                             <button class="done-btn completed" disabled>
-                                ✅ Completed
+                                ✅ Terminé
                             </button>
                         ` : isPlayerDone ? `
                             <button class="done-btn waiting-approval" disabled>
-                                ⏳ Waiting for Approval
+                                ⏳ En attente d'approbation
                             </button>
                         ` : `
                             <button class="done-btn" data-quest-id="${quest.id}">
-                                Done
+                                Terminé
                             </button>
                         `}
                     `}
@@ -3055,7 +3062,7 @@ class UIManager {
                 // Quest has expired - show time since expiration
                 const timeSinceExpiry = Math.abs(timeLeft);
                 const expiredText = this.game.auth.formatTimeSinceExpiry(timeSinceExpiry);
-                timerElement.textContent = `Expired ${expiredText} ago`;
+                timerElement.textContent = `Expiré il y a ${expiredText}`;
                 timerElement.className = 'quest-timer expired';
                 
                 // Add expired styling to the entire quest item
@@ -3106,7 +3113,7 @@ class UIManager {
     
     handleQuestDone(questId) {
         // Show confirmation dialog
-        const confirmed = confirm('Are you sure you want to mark this quest as done?');
+        const confirmed = confirm('Êtes-vous sûr de vouloir marquer cette quête comme terminée ?');
         
         if (confirmed) {
             // Delegate to the auth manager
@@ -3160,18 +3167,18 @@ class UIManager {
         modalContent.innerHTML = `
             <div style="font-size: 48px; margin-bottom: 20px;">📝</div>
             <h3 style="margin: 0 0 15px 0; color: #333; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
-                Quest Justification
+                Justification de la quête
             </h3>
             <div style="margin-bottom: 20px; padding: 15px; background: rgba(0, 0, 0, 0.05); border-radius: 10px; text-align: left;">
-                <h4 style="margin: 0 0 10px 0; color: #666; font-size: 14px;">Quest:</h4>
+                <h4 style="margin: 0 0 10px 0; color: #666; font-size: 14px;">Quête :</h4>
                 <p style="margin: 0; color: #333; font-weight: 600;">${questTitle}</p>
                 <p style="margin: 10px 0 0 0; color: #666; font-size: 14px;">${questDescription}</p>
             </div>
             <p style="margin: 0 0 20px 0; color: #666; font-size: 14px;">
-                Please explain why you were unable to complete this quest. Your explanation will be sent to the admin for review.
+                Veuillez expliquer pourquoi vous n'avez pas pu terminer cette quête. Votre explication sera envoyée à l'administrateur pour examen.
             </p>
             <div style="position: relative; margin-bottom: 20px;">
-                <textarea id="justificationText" placeholder="Enter your justification here..." style="
+                <textarea id="justificationText" placeholder="Entrez votre justification ici..." style="
                     width: 100%;
                     height: 120px;
                     padding: 15px;
@@ -3220,7 +3227,7 @@ class UIManager {
                     cursor: pointer;
                     transition: all 0.2s ease;
                     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-                ">Cancel</button>
+                ">Annuler</button>
                 <button id="justify-submit" style="
                     background: rgba(52, 199, 89, 0.9);
                     color: white;
@@ -3232,7 +3239,7 @@ class UIManager {
                     cursor: pointer;
                     transition: all 0.2s ease;
                     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-                ">Submit Justification</button>
+                ">Soumettre la justification</button>
             </div>
         `;
         
@@ -4523,7 +4530,7 @@ class AuthManager {
                 timeSinceExpiry: timeSinceExpiry,
                 expiredText: expiredText
             });
-            return { text: `Expired ${expiredText} ago`, class: 'expired' };
+            return { text: `Expiré il y a ${expiredText}`, class: 'expired' };
         }
         
         const hours = Math.floor(timeLeft / (1000 * 60 * 60));
@@ -5330,7 +5337,7 @@ class HouseInteractionManager {
             '2': 'Pointage System',
             '3': 'Ideas & Improvement',
             '5': 'Tasks & Reading',
-            '6': 'Seminar Management',
+            '6': 'Gestion d\'Activités',
             '7': 'Mission Management',
             '8': 'Photo & Video Training'
         };
@@ -5596,6 +5603,12 @@ class HouseInteractionManager {
         const houseData = this.getHouseDataFromJSON(house.layerNumber);
         const houseName = houseData ? houseData.name : house.name;
         
+        // Special handling for Rival house - show password input directly
+        if (houseData && houseData.id === 1 && houseData.name === "Rival") {
+            this.showHouseDedicatedForm(house);
+            return;
+        }
+        
         // Create modal if it doesn't exist
         let modal = document.getElementById('house-modal');
         if (!modal) {
@@ -5633,7 +5646,7 @@ class HouseInteractionManager {
             modalContent.innerHTML = `
                 <h2 style="margin: 0 0 20px 0; color: #1d1d1f; font-size: 24px;">${houseName}</h2>
                 <p style="margin: 0 0 30px 0; color: #666; font-size: 16px;">
-                    Welcome to ${houseName}! What would you like to do?
+                    Bienvenue à ${houseName} ! Que souhaitez-vous faire ?
                 </p>
                 <div class="house-actions-container" style="display: flex; flex-direction: column; gap: 15px;">
                     ${this.getHouseActions(house)}
@@ -5779,7 +5792,7 @@ class HouseInteractionManager {
             buttons = `
                 <div class="house-button-container">
                     <button class="house-action-btn" data-action="house-form" data-house="${house.layerNumber}">
-                        📝 Fill Form
+                        📝 Remplir le formulaire
                     </button>
                 </div>
             `;
@@ -5801,218 +5814,217 @@ class HouseInteractionManager {
     
     getHouseDataFromJSON(houseNumber) {
         // House data mapping based on the JSON structure - REARRANGED for correct visual positions
-        // Top of screen (Y=1090) = Mission Planning, Bottom of screen (Y=256) = Login
+        // Top of screen (Y=1090) = Médias & Statistiques (sections), Bottom of screen (Y=256) = Rival
         const houseDataMap = {
             // REARRANGED for correct visual positions (Y-axis corrected)
-            // Top of screen (Y=1090) = Mission Planning, Bottom of screen (Y=256) = Login
-            1: { id: 8, name: "Mission Planning", fields: [{ label: "Missions", type: "table", columns: ["Mission 1", "Mission 2", "Mission 3", "..."] }] },
-            2: { 
-                id: 7, 
-                name: "Feedback & Tasks", 
-                sections: [
-                    {
-                        name: "Tasks",
-                        type: "readonly",
-                        description: "Read-only view"
-                    },
-                    {
-                        name: "Feedback",
-                        type: "readonly",
-                        description: "Read-only view"
-                    },
-                    {
-                        name: "Customer Satisfaction",
-                        type: "readonly",
-                        description: "Read-only view"
-                    }
-                ]
-            },
-            3: { 
-                id: 6, 
-                name: "Media & Statistics", 
+            // Top of screen (Y=1090) = Médias & Statistiques (sections), Bottom of screen (Y=256) = Rival
+            1: { 
+                id: 8, 
+                name: "Médias & Statistiques", 
                 sections: [
                     {
                         name: "Photo / Video",
                         fields: [
-                            { label: "Training", type: "text" },
-                            { label: "Group", type: "text" },
-                            { label: "Date", type: "date" }
+                            { label: "Formation", type: "text" },
+                            { label: "Grp", type: "text" },
+                            { label: "La Date", type: "date" }
                         ]
                     },
                     {
-                        name: "Defense (Final Project)",
+                        name: "Soutenance",
                         fields: [
-                            { label: "Training", type: "text" },
-                            { label: "Group", type: "text" }
+                            { label: "Formation", type: "text" },
+                            { label: "Grp", type: "text" }
                         ]
                     },
                     {
-                        name: "Payment Report",
+                        name: "Bilan de Paiement",
                         fields: [
-                            { label: "Training", type: "text" },
-                            { label: "Group", type: "text" },
-                            { label: "Payment %", type: "number" }
+                            { label: "Formation", type: "text" },
+                            { label: "Grp", type: "text" },
+                            { label: "Pourcentage de Paiement", type: "number" }
                         ]
                     },
                     {
-                        name: "Attendance Report",
+                        name: "Bilan de Présences",
                         fields: [
-                            { label: "Training", type: "text" },
-                            { label: "Group", type: "text" },
-                            { label: "Attendance %", type: "number" }
+                            { label: "Formation", type: "text" },
+                            { label: "Grp", type: "text" },
+                            { label: "Pourcentage de Présence", type: "number" }
                         ]
                     },
                     {
-                        name: "Student Count",
+                        name: "N° D'étudiant",
                         fields: [
-                            { label: "Training", type: "text" },
-                            { label: "Group", type: "text" },
-                            { label: "Number", type: "number" }
+                            { label: "Formation", type: "text" },
+                            { label: "Grp", type: "text" },
+                            { label: "Nomber", type: "number" }
+                        ]
+                    },
+                    {
+                        name: "Satisfaction Clients",
+                        type: "readonly",
+                        description: "Lecture"
+                    }
+                ]
+            },
+            2: { 
+                id: 2, 
+                name: "Centre d'Informations", 
+                sections: [
+                    {
+                        name: "Séminaire",
+                        fields: [
+                            { label: "Titres", type: "text" },
+                            { label: "Heure de Départ / Fin", type: "text" },
+                            { label: "1er Séance", type: "text" },
+                            { label: "2éme Séance", type: "text" },
+                            { label: "3éme Séance", type: "text" },
+                            { label: "N° d'attestations", type: "number" }
+                        ]
+                    },
+                    {
+                        name: "Phone",
+                        fields: [
+                            { label: "Titres", type: "text" },
+                            { label: "Heure de Départ / Fin", type: "text" },
+                            { label: "1er Séance", type: "text" },
+                            { label: "2éme Séance", type: "text" },
+                            { label: "3éme Séance", type: "text" },
+                            { label: "N° d'attestations", type: "number" }
+                        ]
+                    },
+                    {
+                        name: "La Saisie",
+                        fields: [
+                            { label: "Bon", type: "text" },
+                            { label: "Bons Reste", type: "text" },
+                            { label: "Bons Saisie", type: "text" },
+                            { label: "Fiche D'inscription", type: "text" },
+                            { label: "Fiche Reste", type: "text" },
+                            { label: "Fiche Saisie", type: "text" },
+                            { label: "Diplôme", type: "text" },
+                            { label: "Dip Reste", type: "text" },
+                            { label: "Dip Saisie", type: "text" },
+                            { label: "N° d'attestations", type: "number" }
+                        ]
+                    },
+                    {
+                        name: "Hygiène",
+                        fields: [
+                            { label: "Targa / Wilaya", type: "text" },
+                            { label: "Fait par \"Player\"", type: "text" },
+                            { label: "Pourcentage (50-75-100)", type: "number" }
                         ]
                     }
                 ]
             },
+            3: { id: 6, name: "Privé", fields: [{ label: "Missions", type: "table", columns: ["Mission 1", "Mission 2", "Mission 3", "..."] }] },
             4: { 
-                id: 5, 
-                name: "Administrative Data", 
+                id: 4, 
+                name: "Gestion d'Activités", 
                 sections: [
                     {
-                        name: "Diploma",
-                        fields: [
-                            { label: "First Name", type: "text" },
-                            { label: "Last Name", type: "text" },
-                            { label: "Phone Number", type: "text" },
-                            { label: "Training", type: "text" }
-                        ]
+                        name: "Taches",
+                        type: "readonly",
+                        description: "Lecture"
                     },
                     {
-                        name: "Registration Form",
-                        fields: [
-                            { label: "First Name", type: "text" },
-                            { label: "Last Name", type: "text" },
-                            { label: "Phone Number", type: "text" },
-                            { label: "Training", type: "text" }
-                        ]
+                        name: "Feedback",
+                        type: "readonly",
+                        description: "Lecture"
                     },
                     {
-                        name: "Pre-Registration",
+                        name: "Mission",
                         fields: [
-                            { label: "First Name", type: "text" },
-                            { label: "Last Name", type: "text" },
-                            { label: "Phone Number", type: "text" },
-                            { label: "Training", type: "text" },
-                            { label: "Province", type: "text" },
-                            { label: "District", type: "text" },
-                            { label: "Facebook", type: "text" }
-                        ]
-                    },
-                    {
-                        name: "Cash Register",
-                        fields: [
-                            { label: "Cash Fund", type: "number" },
-                            { label: "Vouchers", type: "number" },
-                            { label: "Expenses", type: "number" }
+                            {
+                                label: "Missions",
+                                type: "table",
+                                columns: ["Mission 1", "Mission 2", "Mission 3", "..."]
+                            }
                         ]
                     }
                 ]
             },
             5: { 
-                id: 4, 
-                name: "Time Tracking", 
-                fields: [
-                    { label: "Arrival Time", type: "time" },
-                    { label: "Departure Time", type: "time" },
-                    { label: "Comments", type: "textarea" }
+                id: 5, 
+                name: "Gestion Administrative", 
+                sections: [
+                    {
+                        name: "Diplôme",
+                        fields: [
+                            { label: "Nom Prénom", type: "text" },
+                            { label: "N° Tel", type: "text" },
+                            { label: "Formation", type: "text" }
+                        ]
+                    },
+                    {
+                        name: "Fiche D'inscription",
+                        fields: [
+                            { label: "Nom Prénom", type: "text" },
+                            { label: "N° Tel", type: "text" },
+                            { label: "Formation", type: "text" }
+                        ]
+                    },
+                    {
+                        name: "Pré-inscription",
+                        fields: [
+                            { label: "Nom Prénom", type: "text" },
+                            { label: "N° Tel", type: "text" },
+                            { label: "Wilaya / Targa / FB", type: "text" },
+                            { label: "Formation", type: "text" }
+                        ]
+                    },
+                    {
+                        name: "Caisse",
+                        fields: [
+                            { label: "Fond de Caisse", type: "number" },
+                            { label: "Bons", type: "number" },
+                            { label: "Dépense", type: "number" }
+                        ]
+                    }
                 ]
             },
             6: { 
                 id: 3, 
-                name: "Analytics & History", 
+                name: "Administration", 
                 sections: [
                     {
-                        name: "Improvement Ideas",
+                        name: "Idées D'amélioration",
                         fields: [
-                            { label: "Titles", type: "text" },
-                            { label: "Details", type: "textarea" }
+                            { label: "Titres", type: "text" },
+                            { label: "Détails", type: "textarea" }
                         ]
                     },
                     {
-                        name: "Other Players' Missions",
+                        name: "Missions des Autres",
                         type: "readonly",
-                        description: "Displays other players' missions based on player name"
+                        description: "Affiche les missions des autres selon Nom de Player (Juste Lecture)"
                     },
                     {
-                        name: "Leaderboard",
+                        name: "Classement",
                         type: "readonly",
-                        description: "Displays the current ranking"
+                        description: "Affiche le Classement"
                     },
                     {
-                        name: "Coin History",
+                        name: "Coins Historique",
                         type: "readonly",
-                        description: "Displays coin history by calendar date"
+                        description: "Affiche l'historique selon Calendar"
                     }
                 ]
             },
             7: { 
-                id: 2, 
-                name: "Seminar Management", 
-                sections: [
-                    {
-                        name: "Seminar Info",
-                        fields: [
-                            { label: "Titles", type: "text" },
-                            { label: "Start Time", type: "time" },
-                            { label: "End Time", type: "time" },
-                            { label: "Number of Participants", type: "number" },
-                            { label: "Number of Certificates", type: "number" }
-                        ]
-                    },
-                    {
-                        name: "Phone Info",
-                        fields: [
-                            { label: "Training", type: "text" },
-                            { label: "Group", type: "text" },
-                            { label: "Session", type: "select", options: ["1st", "2nd", "3rd", "..."] }
-                        ]
-                    },
-                    {
-                        name: "Entry Type",
-                        conditionalGroups: [
-                            {
-                                condition: "voucher",
-                                fields: [
-                                    { label: "Remaining Vouchers", type: "number" },
-                                    { label: "Vouchers Entered", type: "number" }
-                                ]
-                            },
-                            {
-                                condition: "registration_form",
-                                fields: [
-                                    { label: "Remaining Forms", type: "number" },
-                                    { label: "Forms Entered", type: "number" }
-                                ]
-                            },
-                            {
-                                condition: "diploma",
-                                fields: [
-                                    { label: "Remaining Diplomas", type: "number" },
-                                    { label: "Diplomas Entered", type: "number" }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        name: "Hygiene",
-                        fields: [
-                            { label: "District", type: "text" },
-                            { label: "Province", type: "text" },
-                            { label: "Completed by", type: "text" },
-                            { label: "Percentage", type: "number" }
-                        ]
-                    }
+                id: 7, 
+                name: "Pointage", 
+                fields: [
+                    { label: "Heure d'arriver", type: "time" },
+                    { label: "Heure de Sortir", type: "time" },
+                    { label: "Commentaire", type: "textarea" }
                 ]
             },
-            8: { id: 1, name: "Login", fields: [{ label: "Password", type: "password" }] }
+            8: { id: 1, name: "Rival", fields: [
+                { label: "Mot de passe", type: "password" }
+            ]}
         };
         
         return houseDataMap[houseNumber];
@@ -6293,7 +6305,7 @@ class HouseInteractionManager {
         } else if (section.fields) {
             contentHTML = this.createFieldSectionContent(section, houseName);
         } else {
-            contentHTML = `<div style="text-align: center; color: #666;">No content available for this section.</div>`;
+            contentHTML = `<div style="text-align: center; color: #666;">Aucun contenu disponible pour cette section.</div>`;
         }
         
         sectionContent.innerHTML = `
@@ -6317,7 +6329,7 @@ class HouseInteractionManager {
                     font-weight: 600;
                     cursor: pointer;
                     transition: all 0.3s ease;
-                ">Close</button>
+                ">Fermer</button>
             </div>
         `;
         
@@ -6640,6 +6652,11 @@ class HouseInteractionManager {
     }
     
     createDirectHouseTableForm(houseData) {
+        // Special handling for Rival house (ID: 1) - compact input with validation icons
+        if (houseData.id === 1 && houseData.name === "Rival") {
+            return this.createRivalPasswordInputs(houseData);
+        }
+        
         const tableRows = houseData.fields.map((field, index) => {
             return this.createTableRowField(field, index);
         }).join('');
@@ -6659,6 +6676,38 @@ class HouseInteractionManager {
                 </table>
             </div>
         `;
+    }
+    
+    createRivalPasswordInputs(houseData) {
+        const passwordInputs = houseData.fields.map((field, index) => {
+            const fieldId = `field-${index}`;
+            return `
+                <input 
+                    type="password" 
+                    id="${fieldId}" 
+                    name="${fieldId}" 
+                    placeholder="${field.label}" 
+                    style="
+                        width: 100%;
+                        padding: 14px 18px;
+                        border: 2px solid #d1d5db;
+                        border-radius: 10px;
+                        font-size: 15px;
+                        box-sizing: border-box;
+                        margin-bottom: 20px;
+                        transition: all 0.3s ease;
+                        outline: none;
+                        background: #ffffff;
+                        color: #1d1d1f;
+                        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+                    "
+                    onfocus="this.style.borderColor='#007AFF'; this.style.boxShadow='0 0 0 3px rgba(0, 122, 255, 0.1)';"
+                    onblur="this.style.borderColor='#d1d5db'; this.style.boxShadow='none';"
+                >
+            `;
+        }).join('');
+        
+        return passwordInputs;
     }
     
     createTableRowField(field, index) {
@@ -6696,7 +6745,7 @@ class HouseInteractionManager {
                 inputElement = `<textarea id="${fieldId}" name="${fieldId}" placeholder="Enter ${field.label}" rows="2" style="${baseInputStyle}"></textarea>`;
                 break;
             case 'table':
-                // Handle table type (for Mission Planning)
+                // Handle table type (for Privé)
                 inputElement = this.createTableField(field, fieldId);
                 break;
             default:
@@ -6743,20 +6792,10 @@ class HouseInteractionManager {
             document.body.appendChild(formModal);
         }
         
+        // Check if this is Rival house for simple input popup
+        const isRivalHouse = houseData.id === 1 && houseData.name === "Rival";
+        
         const formContent = document.createElement('div');
-        formContent.style.cssText = `
-            background: rgba(255, 255, 255, 0.95);
-            padding: 30px;
-            border-radius: 20px;
-            max-width: 600px;
-            width: 90%;
-            max-height: 80vh;
-            overflow-y: auto;
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-        `;
         
         // Generate form content based on house structure
         let formHTML = '';
@@ -6768,67 +6807,140 @@ class HouseInteractionManager {
             // House has direct fields - create simple table form
             formHTML = this.createDirectHouseTableForm(houseData);
         } else {
-            formHTML = '<div style="text-align: center; color: #666;">No form available for this house.</div>';
+            formHTML = '<div style="text-align: center; color: #666;">Aucun formulaire disponible pour cette maison.</div>';
         }
         
-        formContent.innerHTML = `
-            <h2 style="margin: 0 0 20px 0; color: #1d1d1f; font-size: 24px; text-align: center;">
-                ${houseData.name}
-            </h2>
-            <p style="margin: 0 0 30px 0; color: #666; font-size: 16px; text-align: center;">
-                Fill in the required information:
-            </p>
-            <form id="house-dedicated-form" style="display: flex; flex-direction: column; gap: 20px;">
-                ${formHTML}
-                <div style="display: flex; gap: 15px; justify-content: center; margin-top: 30px;">
-                    <button type="button" id="cancel-house-form" style="
-                        background: rgba(255, 59, 48, 0.1);
-                        color: #ff3b30;
-                        border: 2px solid rgba(255, 59, 48, 0.3);
-                        padding: 12px 24px;
-                        border-radius: 12px;
-                        font-size: 16px;
-                        font-weight: 600;
-                        cursor: pointer;
-                        transition: all 0.3s ease;
-                    ">Cancel</button>
-                    <button type="submit" style="
-                        background: linear-gradient(135deg, #007AFF 0%, #0056CC 100%);
-                        color: white;
-                        border: none;
-                        padding: 12px 24px;
-                        border-radius: 12px;
-                        font-size: 16px;
-                        font-weight: 600;
-                        cursor: pointer;
-                        transition: all 0.3s ease;
-                    ">Submit</button>
-                </div>
-            </form>
-            <button id="close-house-form-modal" style="
-                position: absolute;
-                top: 15px;
-                right: 15px;
-                background: none;
-                border: none;
-                font-size: 24px;
-                cursor: pointer;
-                color: #666;
-            ">×</button>
-        `;
+        // Special handling for Rival house - simple popup with just inputs
+        if (isRivalHouse) {
+            formContent.style.cssText = `
+                background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(255, 255, 255, 0.95) 100%);
+                padding: 32px 28px;
+                border-radius: 16px;
+                max-width: 380px;
+                width: 90%;
+                backdrop-filter: blur(20px);
+                -webkit-backdrop-filter: blur(20px);
+                border: 1px solid rgba(255, 255, 255, 0.3);
+                box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(0, 0, 0, 0.05);
+                position: relative;
+            `;
+            
+            formContent.innerHTML = `
+                <form id="house-dedicated-form" style="display: flex; flex-direction: column; gap: 0; margin-top: 0;">
+                    ${formHTML}
+                    <div style="display: flex; gap: 12px; margin-top: 8px;">
+                        <button type="button" id="cancel-house-form" style="
+                            background: rgba(142, 142, 147, 0.1);
+                            color: #8e8e93;
+                            border: 2px solid rgba(142, 142, 147, 0.2);
+                            padding: 14px 28px;
+                            border-radius: 10px;
+                            font-size: 16px;
+                            font-weight: 600;
+                            cursor: pointer;
+                            transition: all 0.3s ease;
+                            flex: 1;
+                            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+                            letter-spacing: 0.3px;
+                        " onmouseover="this.style.background='rgba(142, 142, 147, 0.15)'; this.style.borderColor='rgba(142, 142, 147, 0.3)'" onmouseout="this.style.background='rgba(142, 142, 147, 0.1)'; this.style.borderColor='rgba(142, 142, 147, 0.2)'">Annuler</button>
+                        <button type="submit" style="
+                            background: linear-gradient(135deg, #007AFF 0%, #0056CC 100%);
+                            color: white;
+                            border: none;
+                            padding: 14px 28px;
+                            border-radius: 10px;
+                            font-size: 16px;
+                            font-weight: 600;
+                            cursor: pointer;
+                            transition: all 0.3s ease;
+                            flex: 1;
+                            box-shadow: 0 4px 12px rgba(0, 122, 255, 0.3);
+                            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+                            letter-spacing: 0.3px;
+                        " onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 16px rgba(0, 122, 255, 0.4)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 12px rgba(0, 122, 255, 0.3)'">Rejoindre</button>
+                    </div>
+                </form>
+            `;
+        } else {
+            formContent.style.cssText = `
+                background: rgba(255, 255, 255, 0.95);
+                padding: 30px;
+                border-radius: 20px;
+                max-width: 600px;
+                width: 90%;
+                max-height: 80vh;
+                overflow-y: auto;
+                backdrop-filter: blur(20px);
+                -webkit-backdrop-filter: blur(20px);
+                border: 1px solid rgba(255, 255, 255, 0.2);
+                box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            `;
+            
+            formContent.innerHTML = `
+                <h2 style="margin: 0 0 20px 0; color: #1d1d1f; font-size: 24px; text-align: center;">
+                    ${houseData.name}
+                </h2>
+                <p style="margin: 0 0 30px 0; color: #666; font-size: 16px; text-align: center;">
+                    Fill in the required information:
+                </p>
+                <form id="house-dedicated-form" style="display: flex; flex-direction: column; gap: 20px;">
+                    ${formHTML}
+                    <div style="display: flex; gap: 15px; justify-content: center; margin-top: 30px;">
+                        <button type="button" id="cancel-house-form" style="
+                            background: rgba(255, 59, 48, 0.1);
+                            color: #ff3b30;
+                            border: 2px solid rgba(255, 59, 48, 0.3);
+                            padding: 12px 24px;
+                            border-radius: 12px;
+                            font-size: 16px;
+                            font-weight: 600;
+                            cursor: pointer;
+                            transition: all 0.3s ease;
+                        ">Cancel</button>
+                        <button type="submit" style="
+                            background: linear-gradient(135deg, #007AFF 0%, #0056CC 100%);
+                            color: white;
+                            border: none;
+                            padding: 12px 24px;
+                            border-radius: 12px;
+                            font-size: 16px;
+                            font-weight: 600;
+                            cursor: pointer;
+                            transition: all 0.3s ease;
+                        ">Submit</button>
+                    </div>
+                </form>
+                <button id="close-house-form-modal" style="
+                    position: absolute;
+                    top: 15px;
+                    right: 15px;
+                    background: none;
+                    border: none;
+                    font-size: 24px;
+                    cursor: pointer;
+                    color: #666;
+                ">×</button>
+            `;
+        }
         
         formModal.innerHTML = '';
         formModal.appendChild(formContent);
         formModal.style.display = 'flex';
         
         // Add event listeners
-        document.getElementById('cancel-house-form').addEventListener('click', () => {
-            formModal.style.display = 'none';
-        });
+        const closeButton = document.getElementById('close-house-form-modal');
+        if (closeButton) {
+            closeButton.addEventListener('click', () => {
+                formModal.style.display = 'none';
+            });
+        }
         
-        document.getElementById('close-house-form-modal').addEventListener('click', () => {
-            formModal.style.display = 'none';
-        });
+        const cancelButton = document.getElementById('cancel-house-form');
+        if (cancelButton) {
+            cancelButton.addEventListener('click', () => {
+                formModal.style.display = 'none';
+            });
+        }
         
         formModal.addEventListener('click', (e) => {
             if (e.target === formModal) {
@@ -6836,10 +6948,13 @@ class HouseInteractionManager {
             }
         });
         
-        document.getElementById('house-dedicated-form').addEventListener('submit', (e) => {
-            e.preventDefault();
-            this.handleHouseDedicatedFormSubmission(house, houseData, formModal);
-        });
+        const form = document.getElementById('house-dedicated-form');
+        if (form) {
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                this.handleHouseDedicatedFormSubmission(house, houseData, formModal);
+            });
+        }
         
         // Add input focus effects
         formContent.querySelectorAll('input, select, textarea').forEach(input => {
@@ -7132,7 +7247,7 @@ class HouseInteractionManager {
                 inputElement = `<textarea id="${fieldId}" name="${fieldId}" placeholder="Enter ${field.label}" rows="4" style="${baseInputStyle}"></textarea>`;
                 break;
             case 'table':
-                // Handle table type (for Mission Planning)
+                // Handle table type (for Privé)
                 inputElement = this.createTableField(field, fieldId);
                 break;
             default:
@@ -7234,7 +7349,7 @@ class HouseInteractionManager {
                     font-weight: 600;
                     cursor: pointer;
                     transition: all 0.3s ease;
-                ">Close</button>
+                ">Fermer</button>
             </div>
         `;
         

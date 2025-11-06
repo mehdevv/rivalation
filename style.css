@@ -1327,17 +1327,17 @@ body {
 }
 
 .quest-item.quest-player-done * {
-    color: #2d7d32 !important;
+    color: #1a5d1a !important;
 }
 
 .quest-item.quest-player-done .quest-title {
-    color: #2d7d32 !important;
+    color: #1a5d1a !important;
     font-weight: 700 !important;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.3);
 }
 
 .quest-item.quest-player-done .quest-description {
-    color: #1b5e20 !important;
+    color: #2d5a2d !important;
     font-weight: 600 !important;
 }
 
@@ -1388,13 +1388,13 @@ body {
 }
 
 .quest-item.quest-completed .quest-title {
-    color: #7dd87f !important;
+    color: #1a5d1a !important;
     font-weight: 700 !important;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.3);
 }
 
 .quest-item.quest-completed .quest-description {
-    color: #9dd89f !important;
+    color: #2d5a2d !important;
     font-weight: 400 !important;
 }
 
